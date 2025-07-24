@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eye Blink Tracker</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    #blinkCount { font-size: 2em; margin: 1em 0; }
+    #status { color: green; }
+    #error { color: red; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <h1>Wellness at Work: Eye Blink Tracker</h1>
+  <div id="loginSection">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button id="loginBtn">Login</button>
+    <div id="loginError" class="hidden"></div>
+  </div>
+  <div id="mainSection" class="hidden">
+    <div id="status">Logged in</div>
+    <div>Blinks: <span id="blinkCount">0</span></div>
+    <button id="startBtn">Start Eye Tracker</button>
+    <button id="stopBtn" disabled>Stop Eye Tracker</button>
+    <div id="syncStatus"></div>
+    <button id="logoutBtn">Logout</button>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html> 

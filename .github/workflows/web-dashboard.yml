@@ -1,0 +1,28 @@
+name: Web Dashboard CI
+on:
+  push:
+    paths:
+      - 'web-dashboard/**'
+  pull_request:
+    paths:
+      - 'web-dashboard/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web-dashboard
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Lint (eslint)
+        run: |
+          npm install eslint
+          npx eslint src/ || true 
