@@ -7,6 +7,3 @@ passlib[bcrypt]
 pydantic
 aiofiles
 python-dotenv 
-opencv-python 
-mediapipe 
-numpy

@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8002'; // Backend API URL
+const API_URL = 'http://localhost:8000'; // Backend API URL
 
 const loginSection = document.getElementById('loginSection');
 const mainSection = document.getElementById('mainSection');

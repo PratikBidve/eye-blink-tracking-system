@@ -20,7 +20,7 @@ graph TD
     A[Desktop App (Electron + Python)] -- REST API --> B[Cloud Backend (FastAPI/Express)]
     B -- SQL --> C[Database (PostgreSQL)]
     D[Web Dashboard (React)] -- REST API --> B
-    A -- Local Storage --> E[Offline Data Store]
+    A -- Local Storage --> E[Offline Data Store
 ```
 
 ## Technology Choices
