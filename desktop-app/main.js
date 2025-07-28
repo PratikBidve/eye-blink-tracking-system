@@ -1,21 +1,19 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-const { spawn } = require('child_process');
 
 let mainWindow;
-let pythonProcess;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 600,
-    height: 500,
+    width: 800,
+    height: 700,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
       nodeIntegration: false,
     },
   });
-  mainWindow.loadFile(path.join(__dirname, 'renderer', 'index.html'));
+  mainWindow.loadFile(path.join(__dirname, 'renderer', 'index_websocket.html'));
 }
 
 app.whenReady().then(createWindow);
@@ -24,25 +22,13 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
 });
 
-// IPC: Start/Stop Python Eye Tracker
+// IPC: Eye tracker connects to backend WebSocket service
 ipcMain.handle('start-eye-tracker', async (event) => {
-  if (pythonProcess) return;
-  pythonProcess = spawn('python3', [path.join(__dirname, 'python', 'eye_tracker.py')]);
-  pythonProcess.stdout.on('data', (data) => {
-    mainWindow.webContents.send('blink-count', data.toString());
-  });
-  pythonProcess.stderr.on('data', (data) => {
-    console.error(`Eye Tracker Error: ${data}`);
-  });
-  pythonProcess.on('close', (code) => {
-    pythonProcess = null;
-    mainWindow.webContents.send('eye-tracker-stopped', code);
-  });
+  console.log('🚀 Eye tracker will connect to backend WebSocket service');
+  return { success: true, message: 'Connecting to backend eye tracker service' };
 });
 
 ipcMain.handle('stop-eye-tracker', async (event) => {
-  if (pythonProcess) {
-    pythonProcess.kill();
-    pythonProcess = null;
-  }
+  console.log('🛑 Eye tracker will disconnect from backend WebSocket service');
+  return { success: true, message: 'Disconnected from backend eye tracker service' };
 }); 

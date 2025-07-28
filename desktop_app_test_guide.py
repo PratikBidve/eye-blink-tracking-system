@@ -8,7 +8,7 @@ import json
 import time
 
 # Configuration
-API_BASE_URL = "http://localhost:8002"
+API_BASE_URL = "http://localhost:8000"
 
 def create_test_users():
     """Create test users for desktop app testing"""
@@ -99,7 +99,7 @@ def main():
     print("🖥️  DESKTOP APP INTEGRATION TESTING")
     print("=" * 60)
     print("📱 Your desktop app should be running and showing login screen")
-    print("🌐 Backend API running on: http://localhost:8002")
+    print("🌐 Backend API running on: http://localhost:8000")
     print("📊 Web dashboard running on: http://localhost:5173")
     print("=" * 60)
     print()

@@ -1,10 +1,11 @@
 {
   "name": "eye-blink-desktop-app",
   "version": "1.0.0",
-  "description": "Cross-platform eye blink tracker (Electron + Python)",
+  "description": "Cross-platform eye blink tracker client (Electron + Backend WebSocket)",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "start-websocket": "electron main_websocket.js",
     "build": "electron-builder"
   },
   "dependencies": {

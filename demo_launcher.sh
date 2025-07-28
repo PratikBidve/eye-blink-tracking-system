@@ -56,10 +56,10 @@ if [ ! -f ".deps_installed" ]; then
 fi
 
 # Start the FastAPI server in background
-uvicorn app.main:app --reload --port 8002 &
+uvicorn app.main:app --reload --port 8000 &
 BACKEND_PID=$!
-echo -e "${GREEN}✅ Backend API started on http://localhost:8002${NC}"
-echo -e "${YELLOW}📚 API Documentation: http://localhost:8002/docs${NC}"
+echo -e "${GREEN}✅ Backend API started on http://localhost:8000${NC}"
+echo -e "${YELLOW}📚 API Documentation: http://localhost:8000/docs${NC}"
 echo ""
 
 # Wait a moment for backend to start
@@ -88,6 +88,13 @@ sleep 3
 echo -e "${BLUE}💻 Starting Desktop Application...${NC}"
 cd "$SCRIPT_DIR/desktop-app"
 
+# Install Python dependencies if not already installed
+echo "Checking Python dependencies for eye tracking..."
+python3 -c "import cv2, mediapipe, numpy" 2>/dev/null || {
+    echo "Installing Python dependencies for eye tracking..."
+    pip3 install -r requirements.txt
+}
+
 # Install Electron dependencies if not already installed
 if [ ! -d "node_modules" ]; then
     echo "Installing Electron dependencies..."
@@ -108,13 +115,13 @@ echo "   Email: demo@wellness.com"
 echo "   Password: demo123"
 echo ""
 echo -e "${BLUE}🌐 Access Points:${NC}"
-echo "   • Backend API: http://localhost:8002"
-echo "   • API Docs: http://localhost:8002/docs"
+echo "   • Backend API: http://localhost:8000"
+echo "   • API Docs: http://localhost:8000/docs"
 echo "   • Web Dashboard: http://localhost:5173"
 echo "   • Desktop App: Electron window (should open automatically)"
 echo ""
 echo -e "${BLUE}🎬 Demo Flow:${NC}"
-echo "   1. Show API documentation at http://localhost:8002/docs"
+echo "   1. Show API documentation at http://localhost:8000/docs"
 echo "   2. Login to Web Dashboard at http://localhost:5173"
 echo "   3. Login to Desktop App and start eye tracking"
 echo "   4. View real-time data sync in Web Dashboard"
@@ -148,7 +155,7 @@ cleanup() {
     fi
     
     # Kill any remaining processes on the ports
-    lsof -ti:8002 | xargs kill -9 2>/dev/null
+    lsof -ti:8000 | xargs kill -9 2>/dev/null
     lsof -ti:5173 | xargs kill -9 2>/dev/null
     
     echo -e "${GREEN}🎉 Demo cleanup complete!${NC}"

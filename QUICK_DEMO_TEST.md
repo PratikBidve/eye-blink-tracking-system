@@ -29,9 +29,9 @@ Double-click: demo_launcher.bat
 ```bash
 cd backend-api
 pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8002
+uvicorn app.main:app --reload --port 8000
 ```
-✅ **Check**: Go to `http://localhost:8002/docs` - you should see API documentation
+✅ **Check**: Go to `http://localhost:8000/docs` - you should see API documentation
 
 ### **Step 2: Start Web Dashboard** (30 seconds)
 ```bash
@@ -127,7 +127,7 @@ npm start
    - **Camera not working**: Allow camera permissions in system settings
    - **Login fails**: Use exact credentials `demo@wellness.com` / `demo123`
 
-3. **Emergency Demo**: Use `http://localhost:8002/docs` to show API capabilities even if other components fail
+3. **Emergency Demo**: Use `http://localhost:8000/docs` to show API capabilities even if other components fail
 
 ---
 

@@ -113,7 +113,7 @@ This creates distribution packages:
 ## 🌐 API Integration
 
 ### Backend Communication
-- **Base URL**: `http://localhost:8002` (configurable)
+- **Base URL**: `http://localhost:8000` (configurable)
 - **Authentication**: JWT Bearer tokens
 - **Endpoints Used**:
   - `POST /token` - User login
@@ -148,7 +148,7 @@ desktop-app/
 Create a `.env` file in the root directory:
 
 ```env
-API_BASE_URL=http://localhost:8002
+API_BASE_URL=http://localhost:8000
 PYTHON_PATH=python3
 DEBUG_MODE=false
 AUTO_START_TRACKER=false
@@ -217,7 +217,7 @@ Password: demo123
    - Verify no other apps are using the camera
 
 3. **API Connection Failed**:
-   - Verify backend is running (`http://localhost:8002`)
+   - Verify backend is running (`http://localhost:8000`)
    - Check network connectivity
    - Confirm API URL in configuration
 

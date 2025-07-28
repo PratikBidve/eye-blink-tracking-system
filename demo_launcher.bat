@@ -49,9 +49,9 @@ if not exist ".deps_installed" (
 )
 
 REM Start the FastAPI server
-start "Backend API" cmd /k "uvicorn app.main:app --reload --port 8002"
-echo ✅ Backend API starting on http://localhost:8002
-echo 📚 API Documentation: http://localhost:8002/docs
+start "Backend API" cmd /k "uvicorn app.main:app --reload --port 8000"
+echo ✅ Backend API starting on http://localhost:8000
+echo 📚 API Documentation: http://localhost:8000/docs
 echo.
 
 REM Wait for backend to start
@@ -98,13 +98,13 @@ echo    Email: demo@wellness.com
 echo    Password: demo123
 echo.
 echo 🌐 Access Points:
-echo    • Backend API: http://localhost:8002
-echo    • API Docs: http://localhost:8002/docs
+echo    • Backend API: http://localhost:8000
+echo    • API Docs: http://localhost:8000/docs
 echo    • Web Dashboard: http://localhost:5173
 echo    • Desktop App: Electron window (should open automatically)
 echo.
 echo 🎬 Demo Flow:
-echo    1. Show API documentation at http://localhost:8002/docs
+echo    1. Show API documentation at http://localhost:8000/docs
 echo    2. Login to Web Dashboard at http://localhost:5173
 echo    3. Login to Desktop App and start eye tracking
 echo    4. View real-time data sync in Web Dashboard
@@ -121,7 +121,7 @@ echo Press any key to open the demo URLs in your browser...
 pause >nul
 
 REM Open demo URLs in default browser
-start http://localhost:8002/docs
+start http://localhost:8000/docs
 timeout /t 2 /nobreak >nul
 start http://localhost:5173
 

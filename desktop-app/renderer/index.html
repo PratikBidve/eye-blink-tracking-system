@@ -5,11 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eye Blink Tracker</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 2em; }
-    #blinkCount { font-size: 2em; margin: 1em 0; }
+    body { 
+      font-family: Arial, sans-serif; 
+      margin: 2em; 
+      background-color: #f5f5f5;
+    }
+    #blinkCount { 
+      font-size: 2em; 
+      margin: 1em 0; 
+      color: #007bff;
+      font-weight: bold;
+    }
     #status { color: green; }
     #error { color: red; }
     .hidden { display: none; }
+    
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    button:disabled {
+      background-color: #6c757d;
+      cursor: not-allowed;
+    }
+    
+    button:hover:not(:disabled) {
+      background-color: #0056b3;
+    }
+    
+    #syncStatus {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #e9ecef;
+      border-left: 4px solid #007bff;
+    }
+    
+    input {
+      padding: 8px;
+      margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    
+    .chart-container {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 10px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .chart-bars {
+      display: flex;
+      align-items: end;
+      gap: 5px;
+      height: 150px;
+      margin-top: 10px;
+    }
+    
+    .chart-bar {
+      flex: 1;
+      min-height: 20px;
+      position: relative;
+      border-radius: 4px 4px 0 0;
+      color: white;
+      font-size: 12px;
+      text-align: center;
+    }
+    
+    .bar-label {
+      position: absolute;
+      top: -20px;
+      width: 100%;
+      font-weight: bold;
+    }
+    
+    .bar-time {
+      position: absolute;
+      bottom: -25px;
+      width: 100%;
+      color: #666;
+      font-size: 10px;
+    }
   </style>
 </head>
 <body>
@@ -27,8 +113,27 @@
     <button id="startBtn">Start Eye Tracker</button>
     <button id="stopBtn" disabled>Stop Eye Tracker</button>
     <div id="syncStatus"></div>
+    
+    <!-- Video Stream Section -->
+    <div id="videoSection" style="margin: 20px 0;">
+      <h3>Live Video Stream</h3>
+      <img id="videoStream" style="max-width: 640px; border: 2px solid #ccc; border-radius: 8px;" />
+    </div>
+    
+    <!-- Dashboard Section -->
+    <div id="dashboard" class="hidden">
+      <h3>Session Statistics</h3>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 10px 0;">
+        <div>Total Blinks: <span id="totalBlinks">0</span></div>
+        <div>Blinks/Min: <span id="blinksPerMinute">0</span></div>
+        <div>Session Time: <span id="sessionTime">0:00</span></div>
+        <div>Last Update: <span id="lastUpdate">--:--:--</span></div>
+      </div>
+      <div id="blinkChart"></div>
+    </div>
+    
     <button id="logoutBtn">Logout</button>
   </div>
-  <script src="renderer.js"></script>
+  <script src="renderer_websocket.js"></script>
 </body>
 </html> 

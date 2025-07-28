@@ -37,19 +37,19 @@ cd /path/to/Eye_Blink_test_case/backend-api
 pip install -r requirements.txt
 
 # Start the server
-uvicorn app.main:app --reload --port 8002
+uvicorn app.main:app --reload --port 8000
 ```
 
 **✅ Success Indicator**: You'll see:
 ```
-INFO:     Uvicorn running on http://127.0.0.1:8002 (Press CTRL+C to quit)
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 INFO:     Started reloader process
 ```
 
 ### **Step 2: Test the API Documentation**
 
 1. **Open your web browser**
-2. **Go to**: `http://localhost:8002/docs`
+2. **Go to**: `http://localhost:8000/docs`
 3. **You'll see**: Interactive API documentation with all endpoints
 
 **🎯 Demo Points for CEO:**
@@ -220,7 +220,7 @@ The system tracks:
 
 1. **Create multiple user accounts**:
    ```bash
-   # Use the API documentation at http://localhost:8002/docs
+   # Use the API documentation at http://localhost:8000/docs
    # Create users: user1@company.com, user2@company.com, etc.
    ```
 
@@ -314,7 +314,7 @@ The system tracks:
    - Close other apps using camera (Zoom, Teams, etc.)
 
 3. **"Dashboard shows no data"**
-   - Verify backend is running on port 8002
+   - Verify backend is running on port 8000
    - Check browser console for errors
    - Refresh the page
 
@@ -330,7 +330,7 @@ If you encounter issues during the demo:
 
 1. **Check terminal outputs** for error messages
 2. **Verify all services** are running on correct ports
-3. **Test API directly** at `http://localhost:8002/docs`
+3. **Test API directly** at `http://localhost:8000/docs`
 4. **Use browser developer tools** to debug web issues
 
 ---

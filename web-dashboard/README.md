@@ -29,7 +29,7 @@ A modern React-based web dashboard for visualizing and analyzing eye blink track
 - Node.js 18.0+
 - npm or yarn
 - Modern web browser (Chrome 90+, Firefox 88+, Safari 14+)
-- Backend API running (default: http://localhost:8002)
+- Backend API running (default: http://localhost:8000)
 
 ## 🔧 Installation
 
@@ -138,7 +138,7 @@ src/
 ## 🌐 API Integration
 
 ### Backend Communication
-- **Base URL**: `http://localhost:8002` (configurable)
+- **Base URL**: `http://localhost:8000` (configurable)
 - **Authentication**: JWT Bearer tokens in Authorization headers
 - **Request Format**: JSON with CORS enabled
 - **Response Handling**: Error boundaries and loading states
@@ -240,7 +240,7 @@ web-dashboard/
 Create a `.env` file in the root directory:
 
 ```env
-VITE_API_BASE_URL=http://localhost:8002
+VITE_API_BASE_URL=http://localhost:8000
 VITE_APP_NAME=Eye Blink Dashboard
 VITE_ENABLE_ANALYTICS=true
 VITE_CHART_ANIMATION=true
@@ -375,7 +375,7 @@ Update API URLs for different environments:
 // src/config.js
 const config = {
   development: {
-    apiUrl: 'http://localhost:8002'
+    apiUrl: 'http://localhost:8000'
   },
   production: {
     apiUrl: 'https://your-api-domain.com'
@@ -406,7 +406,7 @@ export default config[process.env.NODE_ENV || 'development'];
                script-src 'self' 'unsafe-inline'; 
                style-src 'self' 'unsafe-inline'; 
                img-src 'self' data:; 
-               connect-src 'self' http://localhost:8002;">
+               connect-src 'self' http://localhost:8000;">
 ```
 
 ## 📈 Performance Optimization
@@ -475,7 +475,7 @@ if (import.meta.env.DEV) {
 ### Network Debugging
 ```javascript
 // Check API connectivity
-fetch('http://localhost:8002/docs')
+fetch('http://localhost:8000/docs')
   .then(response => console.log('API Status:', response.status))
   .catch(error => console.error('API Error:', error));
 ```

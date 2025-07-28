@@ -1,6 +1,8 @@
 from sqlalchemy.orm import Session
 from . import models, schemas, auth
 from typing import List
+from datetime import datetime
+import pytz
 
 def create_user(db: Session, user: schemas.UserCreate):
     hashed_password = auth.get_password_hash(user.password)
@@ -17,7 +19,13 @@ def get_user_by_email(db: Session, email: str):
     return db.query(models.User).filter(models.User.email == email).first()
 
 def create_blink_data(db: Session, user_id: int, blink: schemas.BlinkDataCreate):
-    db_blink = models.BlinkData(user_id=user_id, blink_count=blink.blink_count, timestamp=blink.timestamp)
+    # Set timestamp to India timezone if not provided
+    timestamp = blink.timestamp
+    if timestamp is None:
+        india_tz = pytz.timezone('Asia/Kolkata')
+        timestamp = datetime.now(india_tz)
+    
+    db_blink = models.BlinkData(user_id=user_id, blink_count=blink.blink_count, timestamp=timestamp)
     db.add(db_blink)
     db.commit()
     db.refresh(db_blink)

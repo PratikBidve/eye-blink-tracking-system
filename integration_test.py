@@ -12,7 +12,7 @@ import json
 from datetime import datetime
 
 # Test configuration
-API_BASE_URL = "http://localhost:8002"
+API_BASE_URL = "http://localhost:8000"
 WEB_DASHBOARD_URL = "http://localhost:5173"
 
 class FullStackTestSuite:
